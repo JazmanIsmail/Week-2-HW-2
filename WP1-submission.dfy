@@ -1,6 +1,6 @@
 // BEGIN-TODO(Name)
 // Please, before you do anything else, add your names here:
-// Group <Group number>
+// Group 69
 // Jazman Mohamad Ismail: 1923072
 // Arhan Chhabra: 1940198
 //
@@ -23,7 +23,14 @@
 /* (a) WP(x := 3y − 2x, x <= y) */
 method A(x: int, y: int) returns (x': int)
 // BEGIN-TODO(MethodA)
-// Add the specification and the method body here.
+    requires y <= x
+    ensures x' <= y
+{
+    assert y <= x;
+    x' := 3*y - 2*x;
+    assert x' <= y;
+    
+}
 // END-TODO(MethodA)
 
 
