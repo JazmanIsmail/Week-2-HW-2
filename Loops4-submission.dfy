@@ -24,5 +24,16 @@
  * and allows you to prove the assertion after the loop. */
 method Solution()
 // BEGIN-TODO(Solution)
-// Add the specification and the method body here.
+{
+    var x: int;
+    x := 0;
+    while x < 100
+        // Needs to check x is divisible by 3 (to reach exactly 102) and that it stops
+        // at 102
+        invariant x % 3 == 0 && 0 <= x < 103
+    {
+      x := x + 3;
+    }
+    assert x == 102;
+}
 // END-TODO(Solution)
