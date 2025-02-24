@@ -36,7 +36,20 @@ method A(x: int, y: int) returns (x': int)
 
 /* (e) WP(m := n; n := n + 1; forall i | 0 <= i < n :: s[i] <= s[m])
  * given that `forall i | 0 <= i < n :: s[i] <= s[n]` */
-method E(m: int, n: int, s: seq<int>) returns (m': int, n': int)
 // BEGIN-TODO(MethodE)
 // Add the specification and the method body here.
+method E(m: int, n: int, s: seq<int>) returns (m': int, n': int)
+    requires |s| > n
+    requires forall i | 0 <= i < n :: s[i] <= s[n]
+    ensures 0 <= n' <= |s|
+    ensures 0 <= m' < |s|
+    ensures forall i | 0 <= i < n' :: s[i] <= s[m']
+{
+    m' := n;
+    n' := n + 1;
+
+    assert forall i | 0 <= i < n :: s[i] <= s[n];
+    assert s[n] <= s[m'];  
+    assert forall i | 0 <= i < n' :: s[i] <= s[m']; 
+}
 // END-TODO(MethodE)
