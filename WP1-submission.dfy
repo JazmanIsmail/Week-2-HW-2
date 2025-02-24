@@ -39,8 +39,9 @@ method A(x: int, y: int) returns (x': int)
 // BEGIN-TODO(MethodE)
 // Add the specification and the method body here.
 method E(m: int, n: int, s: seq<int>) returns (m': int, n': int)
-    requires |s| > n
+    requires 0 <= n < |s|
     requires forall i | 0 <= i < n :: s[i] <= s[n]
+
     ensures 0 <= n' <= |s|
     ensures 0 <= m' < |s|
     ensures forall i | 0 <= i < n' :: s[i] <= s[m']

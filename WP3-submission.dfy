@@ -25,5 +25,16 @@
  *  } */
 method Ex(x: int, y: int) returns (y': int)
 // BEGIN-TODO(Method)
-// Add the specification and the method body here.
+    ensures x >= 8 ==> y' < 10
+{
+    if x < 8 {
+        if x == 5 {
+            y' := 10;
+        } else {
+            y' := 2;
+        }
+    } else {
+        y' := 0;
+    }
+}
 // END-TODO(Method)
